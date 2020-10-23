@@ -1,13 +1,14 @@
-from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
-from django.http import HttpResponse
+from django.contrib.auth import get_user
+
 
 # Create your views here.
 
 
 def home(request):
     if request.user.is_authenticated:
-        return render(request, "main/index.html")
+        user = get_user(request)
+        return render(request, "main/index.html",{'usr':user})
     else:
         return redirect('account/login')
 
