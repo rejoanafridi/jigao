@@ -8,14 +8,14 @@ from django.contrib.auth.models import User
 
 
 def home(request):
-    # if request.user.is_authenticated:
-    #     user = get_user(request)
-    #     context = {
-    #         'usr': user
-    #     }
-    #     return render(request, "main/index.html", context)
-    # else:
-    return render(request, 'main/index.html')
+    if request.user.is_authenticated:
+        user = get_user(request)
+        context = {
+            'usr': user
+        }
+        return render(request, "main/index.html", context)
+    else:
+        return render(request, 'main/index.html')
 
 
 def login(request):
